@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOS Tire - Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="video">
+            <video autoplay loop muted plays-inline class="background-clip">
+                <source src="Pit Stop.mp4" type="video/mp4">
+            </video>
+        </div>
+
+    <div class="container">
+        <header>
+            <img src="logo.png" alt="SOS Tire Logo">
+            <h2>Website untuk menemukan tukang tambal ban terdekat dengan cepat dan mudah!</h2>
+        </header>
+        
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">Tentang Kami</a>
+            <a href="#services">Layanan</a>
+            <a href="feedback.html">Kritik & Saran</a>
+
+        </nav>
+        
+        <section id="home">
+            <h2>Home</h2>
+            <p>Selamat datang di SOS Tire, platform inovatif yang dirancang khusus untuk membantu para pengendara di Indonesia menghadapi situasi darurat ban bocor. Kami memahami betapa frustrasinya ketika ban kendaraan Anda tiba-tiba bocor di tengah perjalanan.</p>
+            <button id="learnMoreHome">Pelajari Lebih Lanjut</button>
+        </section>
+        
+        <section id="about">
+            <h2>Tentang Kami</h2>
+            <p>SOS Tire didirikan oleh tim profesional yang memiliki pengalaman bertahun-tahun di industri otomotif dan teknologi. Kami lahir dari kebutuhan nyata para pengendara yang sering mengalami kesulitan menemukan layanan tambal ban saat darurat.</p>
+            <button id="learnMoreAbout">Pelajari Lebih Lanjut</button>
+        </section>
+        
+        <section id="services">
+            <h2>Layanan</h2>
+            <p>Di bagian Layanan, kami menyediakan fitur interaktif untuk Anda berinteraksi dengan platform kami. Berikan rating bintang untuk mengukur kepuasan Anda terhadap layanan kami, dan tulis saran atau kritik secara detail.</p>
+            <button id="learnMoreServices">Pelajari Lebih Lanjut</button>
+            <h3>Beri Saran dan Kritik</h3>
+            <div class="rating">
+                <span class="star" data-rating="1">★</span>
+                <span class="star" data-rating="2">★</span>
+                <span class="star" data-rating="3">★</span>
+                <span class="star" data-rating="4">★</span>
+                <span class="star" data-rating="5">★</span>
+            </div>
+            <form id="feedbackForm">
+                <textarea placeholder="Tulis saran atau kritik Anda secara detail di sini..." required></textarea>
+                <button type="submit">Kirim</button>
+            </form>
+
+            <h3>Cari Tukang Tambal Ban</h3>
+            <button id="getLocationBtn">Gunakan Lokasi Saya Saat Ini</button> <!-- Tombol untuk geolocation -->
+            <form id="locationForm">
+                <input type="text" id="name" placeholder="Nama Anda" required>
+                <input type="text" id="number" placeholder="Nomor telpon" required>
+                <input type="text" id="location" placeholder="Tempat ban bocor" required>
+                <input type="hidden" id="lat" value="">
+                <input type="hidden" id="lng" value="">
+                <button type="submit">Cari</button>
+            </form>
+        </section>
+    </div>
+
+    <!-- Modal untuk Home -->
+    <div id="modalHome" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Penjelasan Lengkap Home</h2>
+            <p>SOS Tire adalah platform inovatif yang membantu Anda menemukan tukang tambal ban terdekat saat ban bocor. Keunggulan kami meliputi lokasi akurat, harga transparan, dan kontak langsung via telepon. Kami hemat waktu dan hindari stres. Tips keselamatan: Selalu periksa tekanan ban secara rutin, bawa ban serep, dan hindari mengemudi dengan ban bocor. Manfaat menggunakan SOS Tire: Akses cepat 24/7, dukungan komunitas pengendara, dan promosi khusus untuk pengguna setia. Bergabunglah dengan ribuan pengguna yang telah mempercayai kami untuk perjalanan yang lebih aman!</p>
+        </div>
+    </div>
+
+    <!-- Modal untuk About -->
+    <div id="modalAbout" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Penjelasan Lengkap Tentang Kami</h2>
+            <p>Kami adalah tim yang berkomitmen untuk membantu pengendara di Indonesia dengan teknologi geolokasi canggih. Visi kami: Menciptakan ekosistem transportasi aman. Misi: Akses mudah ke layanan berkualitas. Kami bekerja sama dengan tukang tambal ban terverifikasi. Informasi tambahan: Tim kami terdiri dari ahli IT dan mekanik otomotif. Kami dukung sustainability dengan mendorong perbaikan ban daripada penggantian. Hubungi kami untuk kemitraan atau pertanyaan. Sosial media kami aktif untuk update terbaru dan tips perawatan kendaraan.</p>
+        </div>
+    </div>
+
+    <!-- Modal untuk Services -->
+    <div id="modalServices" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Penjelasan Lengkap Layanan</h2>
+            <p>Layanan kami interaktif: Rating bintang membantu kami meningkatkan kualitas. Saran/kritik disimpan untuk analisis. Pencarian lokasi menggunakan geolokasi akurat. Informasi tambahan: Kami integrasikan dengan Google Maps untuk navigasi real-time. Tips: Pastikan lokasi akurat untuk hasil terbaik. Dukungan: Hotline 24/7 untuk darurat. Privasi: Data Anda aman dan tidak dibagikan. Manfaat: Hemat biaya dan waktu, tingkatkan keselamatan jalan. Kami terus update fitur berdasarkan feedback pengguna.</p>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+        }
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+        document.getElementById('learnMoreHome').addEventListener('click', () => openModal('modalHome'));
+        document.getElementById('learnMoreAbout').addEventListener('click', () => openModal('modalAbout'));
+        document.getElementById('learnMoreServices').addEventListener('click', () => openModal('modalServices'));
+        document.querySelectorAll('.close').forEach(closeBtn => {
+            closeBtn.addEventListener('click', () => {
+                closeModal(closeBtn.parentElement.parentElement.id);
+            });
+        });
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal')) {
+                e.target.style.display = "none";
+            }
+        });
+
+        // Rating bintang interaktif
+        const stars = document.querySelectorAll('.star');
+        let currentRating = 0;
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                currentRating = star.dataset.rating;
+                stars.forEach(s => s.classList.remove('active'));
+                for (let i = 0; i < currentRating; i++) {
+                    stars[i].classList.add('active');
+                }
+                alert(`Terima kasih! Rating Anda: ${currentRating} bintang`);
+            });
+        });
+
+        // Form feedback - simpan ke localStorage
+        document.getElementById('feedbackForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const feedback = e.target.querySelector('textarea').value;
+            const feedbackData = {
+                rating: currentRating,
+                text: feedback,
+                timestamp: new Date().toLocaleString()
+            };
+            let feedbacks = JSON.parse(localStorage.getItem('sosTireFeedbacks')) || [];
+            feedbacks.push(feedbackData);
+            localStorage.setItem('sosTireFeedbacks', JSON.stringify(feedbacks));
+            alert('Terima kasih atas saran/kritik Anda! Feedback telah disimpan.');
+            e.target.reset();
+            currentRating = 0;
+            stars.forEach(s => s.classList.remove('active'));
+        });
+
+        // Form lokasi - redirect ke results.html
+        document.getElementById('locationForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const number = document.getElementById('number').value;
+            const location = document.getElementById('location').value;
+            window.location.href = `results.html?name=${encodeURIComponent(name)}&location=${encodeURIComponent(location)}`;
+        });
+
+        document.getElementById('getLocationBtn').addEventListener('click', () => {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition((position) => {
+                    const lat = position.coords.latitude;
+                    const lng = position.coords.longitude;
+                    document.getElementById('lat').value = lat;
+                    document.getElementById('lng').value = lng;
+                    document.getElementById('location').value = `Lokasi GPS: ${lat.toFixed(4)}, ${lng.toFixed(4)}`;
+                    alert('Lokasi berhasil didapat! Sekarang isi nama dan klik Cari.');
+                }, (error) => {
+                    alert('Gagal mendapatkan lokasi: ' + error.message + '. Pastikan izin GPS aktif.');
+                });
+            } else {
+                alert('Browser Anda tidak mendukung geolocation.');
+            }
+        });
+    </script>
+</body>
+</html>

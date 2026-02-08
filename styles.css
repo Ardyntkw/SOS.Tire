@@ -1,0 +1,172 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('https://source.unsplash.com/featured/?car,tire,repair,road') no-repeat center center fixed;
+    background-size: cover;
+    color: #ffffff;
+}
+.background-clip
+{
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+@media (min-aspect-ratio:18/9) {
+  .background-clip{
+    width: 100%;
+    height: auto;
+  }
+}
+@media (max-aspect-ratio:18/9) {
+  .background-clip{
+    width: auto;
+    height: 100%;
+  }
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background: rgba(52, 52, 52, 0.674);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+header {
+    text-align: center;
+    background: url(Jalan.jpeg);
+    color: rgb(255, 255, 255);
+    padding: 20px;
+    border-radius: 10px 10px 0 0;
+    position: relative;
+}
+.logo {
+    position: left;
+    top: 5px;
+    left: 5px;
+    width: 20px;
+    height: 20px;
+}
+nav {
+    text-align: center;
+    margin: 20px 0;
+}
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #ffdd00;
+    font-weight: 600;
+}
+section {
+    margin: 40px 0;
+}
+.rating {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+.star {
+    font-size: 50px;
+    color: #ddd;
+    cursor: pointer;
+}
+.star:hover, .star.active {
+    color: #FFD700;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+}
+input, textarea, button {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+button {
+    background: #128cff;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+button:hover {
+    background: #00338c;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+.modal-content {
+    background-color: #000000;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.close:hover {
+    color: black;
+}
+.tire-option {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    background: #f9f9f9;
+}
+iframe {
+    width: 100%;
+    height: 300px;
+    border: none;
+    border-radius: 5px;
+}
+.back-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background: #0e8700;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    width: fit-content;
+}
+.back-btn:hover {
+    background: #044a00;
+}
+h1 {
+text-align: center;
+}
+.card {
+background: rgba(52, 52, 52, 0.778);
+padding: 15px;
+margin: 15px auto;
+max-width: 600px;
+border-radius: 8px;
+box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.rating {
+color: gold;
+font-size: 18px;
+}
+.time {
+font-size: 12px;
+color: #777;
+}

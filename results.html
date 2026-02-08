@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hasil Pencarian - SOS Tire</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Poppins, sans-serif;
+    background: #f5f5f5;
+}
+#map {
+    height: 100vh;
+    width: 100%;
+}
+
+/* Bottom Sheet */
+.bottom-sheet {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 45%;
+    background: rgba(52, 52, 52, 0.712);
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 -4px 20px rgba(0,0,0,.2);
+    padding: 16px;
+    overflow-y: auto;
+}
+
+.sheet-header {
+    text-align: center;
+    color: #f0f0f0;
+    margin-bottom: 10px;
+}
+.drag {
+    width: 40px;
+    height: 5px;
+    background: #ccc;
+    border-radius: 10px;
+    margin: 0 auto 8px;
+}
+
+.place {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+.place:hover {
+    background: #f0f0f0;
+}
+.place h4 {
+    margin: 0 0 4px;
+}
+.place small {
+    color: #666;
+}
+.back-btn {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 999;
+    background: rgb(0, 102, 255);
+    border: none;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 14px;
+    box-shadow: 0 4px 10px rgba(0,0,0,.2);
+    cursor: pointer;
+    color: #f0f0f0;
+}
+
+.back-btn:hover {
+    background: #002a84;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="map"></div>
+
+<div class="bottom-sheet">
+    <div class="sheet-header">
+        <div class="drag"></div>
+        <strong id="userInfo"></strong>
+    </div>
+    <div id="placesList"></div>
+</div>
+
+<button class="back-btn" onclick="window.location.href='home.html'">
+    ⬅ Kembali ke Home
+</button>
+
+<script>
+
+let userMarker;
+let userLocation;
+const params = new URLSearchParams(window.location.search);
+const name = params.get("name");
+const locationText = params.get("location");
+
+document.getElementById("userInfo").innerText =
+    `Halo ${name} 👋 — lokasi: ${locationText}`;
+
+let map;
+let markers = [];
+
+function initMap() {
+    map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 15,
+    center: { lat: -7.9666, lng: 112.6326 } // default Kota Malang
+    });
+
+    const geocoder = new google.maps.Geocoder();
+
+    geocoder.geocode({ address: locationText }, (results, status) => {
+    if (status === "OK") {
+        userLocation = results[0].geometry.location;
+        map.setCenter(userLocation);
+
+        // MARKER LOKASI KITA
+        userMarker = new google.maps.Marker({
+            map: map,
+            position: userLocation,
+            icon: {
+                url: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+            },
+            title: "Lokasi Anda"
+        });
+
+        const infoWindow = new google.maps.InfoWindow({
+            content: "<strong>📍 Lokasi Anda</strong>"
+        });
+
+        infoWindow.open(map, userMarker);
+
+        searchTambalBan(userLocation);
+
+    } else {
+        alert("Lokasi tidak ditemukan");
+    }
+});
+
+}
+
+function searchTambalBan(location) {
+    const service = new google.maps.places.PlacesService(map);
+    service.nearbySearch({
+        location,
+        radius: 2000,
+        keyword: "tambal ban"
+    }, (results, status) => {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+            renderPlaces(results);
+        }
+    });
+}
+
+function renderPlaces(places) {
+    const list = document.getElementById("placesList");
+    list.innerHTML = "";
+
+    places.forEach((place, index) => {
+        const marker = new google.maps.Marker({
+            map,
+            position: place.geometry.location,
+            title: place.name
+        });
+
+        markers.push(marker);
+
+        const div = document.createElement("div");
+        div.className = "place";
+        div.innerHTML = `
+            <h4>${place.name}</h4>
+            <small>${place.vicinity || "Lokasi tidak tersedia"}</small>
+        `;
+
+        div.onclick = () => {
+            map.panTo(place.geometry.location);
+            map.setZoom(17);
+        };
+
+        list.appendChild(div);
+    });
+}
+</script>
+
+<script
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeYU_RrECMu_MAysmuXJK4rAjlt6GIrYs&libraries=places&callback=initMap"async defer></script>
+
+</body>
+</html>
